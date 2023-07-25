@@ -1,15 +1,13 @@
-sudo apt update;
-sudo apt install gcc-avr curl  avr-libc avrdude tmux tmuxinator python3-pip micro nmap ncat iproute2 npm -y
+sudo apt update
+sudo apt install gcc-avr curl  avr-libc avrdude tmux tmuxinator wireguard resolvconf python3-pip micro nmap ncat iproute2 npm -y
+pip3 install pyqt mako
 
 <%def name="install_wireguard_client(action, conf_file)">
-	
-sudo apt install wireguard resolvconf -y
 
 sudo chown -R $USER:root /etc/wireguard
 mv $HOME/${conf_file}.conf /etc/wireguard
 
 	####     Configure wireguard client
-
 
 	% if action == "install":
 sudo systemctl enable wg-quick@${conf_file}.service
@@ -65,6 +63,4 @@ echo 'export OPENAI_API_KEY=${api_key}' >> $HOME/.bashrc
 pip3 install octoprint kivy twisted shell_gpt bpytop
 
 tmux config tmux.conf
-
-pip3 install pyqt mako
 </%def>

@@ -17,7 +17,7 @@ def install_wireguard_client(action):
         ]
     )
 
-    print( template.get_def("install_wireguard_client").render(action, wireguard_client) )
+    os.system( template.get_def("install_wireguard_client").render(action, wireguard_client) )
     
 def install_docker():
     os.system( template.get_def("install_docker").render("DOCKER_CONFIG:$HOME/.docker") )
@@ -36,7 +36,7 @@ def environment():
         title='Open AI Key',
         text='Please type your api key:')
 
-    print( template.get_def("environment").render(api_key, ps_design) )
+    os.system( template.get_def("environment").render(api_key, ps_design) )
 
 def main_gate():
     main = radiolist_dialog(
@@ -67,6 +67,7 @@ def main_gate():
         print('done')
 
 main_gate()
+
 # match main:
     # case 'docker':
         # install_docker()
