@@ -1,9 +1,13 @@
+
+import os
+os.system("sudo apt update")
+os.system("sudo apt install python3-pip")
+os.system("pip3 install mako prompt_toolkit")
+
 from mako.template import Template
 
 from prompt_toolkit import prompt
 from prompt_toolkit.shortcuts import input_dialog, radiolist_dialog
-
-import os
 
 template = Template(filename="feels_like_home.sh")
 
@@ -36,42 +40,36 @@ def environment():
         title='Open AI Key',
         text='Please type your api key:')
 
-    os.system( template.get_def("environment").render(api_key, ps_design) )
+    os.system( template.get_def("environment").render(api_key.run(), ps_design.run()) )
 
 def main_gate():
     main = radiolist_dialog(
         title="Mainz",
         text="...",
         values=[
+            ("general", "General Setup"),
             ("docker", "Install Docker"),
             ("wireguard-install", "Set Wireguard Client"),
             ("wireguard-uninstall", "Remove Wireguard Client"),
-            ("api-key", "Set OpenAI API Key"),
+            ("environment", "Environmental Setup"),
             ("quit", "Quit")
         ]
     )
 
-    if main == 'docker':
+    return main.run()
+
+match main_gate():
+    case 'general':
+        os.system( template.get_def("general").render() )
+        
+    case 'docker':
         install_docker()
         
-    elif main == 'wireguard-install':
+    case 'wireguard-install':
         install_wireguard_client("install")
 
-    elif main == 'wireguard-uninstall':
+    case 'wireguard-uninstall':
         install_wireguard_client("uninstall")
 
-    elif main == 'api-key':
+    case 'environment':
         environment()
-
-    else:
-        print('done')
-
-main_gate()
-
-# match main:
-    # case 'docker':
-        # install_docker()
-# 
-    # case 'wireguard':
-        # install_wireguard_client()
-        # 

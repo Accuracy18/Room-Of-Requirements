@@ -1,6 +1,8 @@
+<%def name="general()">
 sudo apt update
 sudo apt install gcc-avr curl  avr-libc avrdude tmux tmuxinator wireguard resolvconf python3-pip micro nmap ncat iproute2 npm -y
 pip3 install pyqt mako
+</%def>
 
 <%def name="install_wireguard_client(action, conf_file)">
 
@@ -54,10 +56,10 @@ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 </%def>
 
 ### 	Environments
-<%def name="environment(ps, api_key)">
+<%def name="environment(api_key, ps)">
 
 echo 'export EDITOR=micro' >> $HOME/.bashrc
-echo 'export PS1=$(cat $HOME/room_of_requirements/ps-design/.${ps}.txt)' >> $HOME/.bashrc
+echo 'export PS1=$(cat $HOME/Room-Of-Requirements/ps1-design/${ps}.txt)' >> $HOME/.bashrc
 echo 'export OPENAI_API_KEY=${api_key}' >> $HOME/.bashrc
 
 pip3 install octoprint kivy twisted shell_gpt bpytop
