@@ -1,6 +1,6 @@
 <%def name="general()">
 sudo apt update
-sudo apt install gcc-avr curl  avr-libc avrdude tmux tmuxinator wireguard resolvconf python3-pip micro nmap ncat iproute2 npm -y
+sudo apt install gcc-avr curl ranger  avr-libc avrdude tmux tmuxinator wireguard resolvconf python3-pip micro nmap ncat iproute2 npm -y
 pip3 install pyqt mako
 </%def>
 
