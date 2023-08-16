@@ -10,18 +10,6 @@ from prompt_toolkit import prompt
 from prompt_toolkit.shortcuts import input_dialog, radiolist_dialog
 
 template = Template(filename="feels_like_home.sh")
-
-def install_wireguard_client(action):
-    wireguard_client = radiolist_dialog(
-        title="WireGuard",
-        text="Choose something",
-        values=[
-            ("linux_home", "Linux Home"),
-            ("raspi_guy", "Raspberry Pi")
-        ]
-    )
-
-    os.system( template.get_def("install_wireguard_client").render(action, wireguard_client) )
     
 def install_docker():
     os.system( template.get_def("install_docker").render("DOCKER_CONFIG:$HOME/.docker") )
@@ -65,11 +53,5 @@ match main_gate():
     case 'docker':
         install_docker()
         
-    case 'wireguard-install':
-        install_wireguard_client("install")
-
-    case 'wireguard-uninstall':
-        install_wireguard_client("uninstall")
-
     case 'environment':
         environment()
