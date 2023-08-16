@@ -12,7 +12,7 @@ from prompt_toolkit.shortcuts import input_dialog, radiolist_dialog
 template = Template(filename="feels_like_home.sh")
     
 def install_docker():
-    os.system( template.get_def("install_docker").render("DOCKER_CONFIG:$HOME/.docker") )
+    os.system( template.get_def("install_docker").render("DOCKER_CONFIG:-$HOME/.docker") )
 
 def environment():
     ps_design = radiolist_dialog(
