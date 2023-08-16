@@ -37,8 +37,6 @@ def main_gate():
         values=[
             ("general", "General Setup"),
             ("docker", "Install Docker"),
-            ("wireguard-install", "Set Wireguard Client"),
-            ("wireguard-uninstall", "Remove Wireguard Client"),
             ("environment", "Environmental Setup"),
             ("quit", "Quit")
         ]
