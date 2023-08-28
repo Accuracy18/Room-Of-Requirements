@@ -1,0 +1,33 @@
+---
+name: workspace
+root: /home/gtdonny/
+windows:
+    - dotnet:
+        root: /home/gtdonny/Microsoft-PlayGround/playground/bractice
+        layout: 41a4,272x65,0,0{150x65,0,0[150x39,0,0,52,150x25,0,40,56],121x65,151,0[121x29,151,0,55,121x35,151,30,57]}
+        
+        panes:
+            - micro ../../docker-compose.yaml Controllers/HomeController.cs Models/ErrorViewModel.cs Views/Home/Index.cshtml
+            - cd ../..
+            - cd ../..
+            - sgpt --repl donny
+    
+    - service:
+        root: /home/gtdonny/Services
+        layout: 41a4,272x65,0,0{150x65,0,0[150x39,0,0,52,150x25,0,40,56],121x65,151,0[121x29,151,0,55,121x35,151,30,57]}
+        
+        panes:
+            - micro docker-compose.yaml
+            - echo ng
+            - echo noss
+            - sgpt --repl susan
+
+    - missy:
+        root: /home/gtdonny/Missi-AI
+        layout: 41a4,272x65,0,0{150x65,0,0[150x39,0,0,52,150x25,0,40,56],121x65,151,0[121x29,151,0,55,121x35,151,30,57]}
+        
+        panes:
+            - micro docker-compose.yaml third_eye/run.py hand_control/run.py
+            - echo ng
+            - echo noss
+            - sgpt --repl missy
