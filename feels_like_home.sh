@@ -3,6 +3,10 @@
 sudo apt update
 sudo apt install gcc-avr curl ranger  avr-libc avrdude tmux tmuxinator wireguard resolvconf python3-pip micro nmap ncat iproute2 npm docker.io -y
 
+cp tmux.conf $HOME/.tmux.conf
+cp ps1-design/casual.sh $HOME/.casual.sh
+echo 'source $HOME/.casual.sh' >> $HOME/.bashrc
+
 npm install cncjs
 pip3 install octoprint kivy twisted shell_gpt bpytop pyqt mako
 
@@ -17,9 +21,9 @@ sudo addgroup docker
 sudo usermod -aG docker $USER
 newgrp docker
 
-mkdir -p $DOCKER_CONFIG/cli-plugins
+mkdir $HOME/.docker/cli-plugins
 
-curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o $HOME/.docker/cli-plugins/cli-plugins/docker-compose
 
 sudo chmod +x $HOME/.docker/cli-plugins/docker-compose
 </%def>
