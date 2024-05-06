@@ -1,0 +1,13 @@
+[{
+  "Name": "cgemini",
+  "Description": "Using Gemini with Micro editor plugin",
+  "Website": "",
+  "Versions": [
+    {
+      "Version": "0.0.1",
+      "Require": {
+        "micro": ">=2.0.0"
+      }
+    }
+  ]
+}]
