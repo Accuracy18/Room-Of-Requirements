@@ -1,0 +1,13 @@
+[{
+  "Name": "templating",
+  "Description": "just a few templates to fill",
+  "Website": "",
+  "Versions": [
+    {
+      "Version": "0.0.1",
+      "Require": {
+        "micro": ">=2.0.0"
+      }
+    }
+  ]
+}]
