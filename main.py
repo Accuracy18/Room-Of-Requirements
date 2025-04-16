@@ -1,56 +1,23 @@
+import os, argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--install', action=argparse.BooleanOptionalAction, default=False)
+args = parser.parse_args()
 
-import os
-os.system("sudo apt update")
-os.system("sudo apt install python3-pip")
-os.system("pip3 install mako prompt_toolkit")
+from textual.app import App
+from textual.widgets import Header, Footer, Static
 
-from mako.template import Template
-
-from prompt_toolkit import prompt
-from prompt_toolkit.shortcuts import input_dialog, radiolist_dialog
-
-template = Template(filename="feels_like_home.sh")
+if args.install:
+    os.system("sudo apt update; sh feels_like_home.sh")
     
-def install_docker():
-    #DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-    os.system( template.get_def("install_docker").render("DOCKER_CONFIG:-$HOME/.docker") )
+class Room_Of_Requirements(App):
+    CSS_PATH = "style.tcss"  # Optional CSS file
 
-def environment():
-    ps_design = radiolist_dialog(
-        title="PS Design",
-        text="Choose something",
-        values=[
-            ("claro", "claro"),
-            ("casual", "casual")
-        ]
-    )
+    def compose(self):
+        yield Header("My Textual App")
+        yield Static("Hello, Textual!", id="greeting")
+        yield Footer()
 
-    api_key = input_dialog(
-        title='Open AI Key',
-        text='Please type your api key:')
+    def on_mount(self) -> None:
+        self.query_one("#greeting").update("Welcome to the TUI world!")
 
-    os.system( template.get_def("environment").render(api_key.run(), ps_design.run()) )
-
-def main_gate():
-    main = radiolist_dialog(
-        title="Mainz",
-        text="...",
-        values=[
-            ("general", "General Setup"),
-            ("docker", "Install Docker"),
-            ("environment", "Environmental Setup"),
-            ("quit", "Quit")
-        ]
-    )
-
-    return main.run()
-
-match main_gate():
-    case 'general':
-        os.system( template.get_def("general").render() )
-        
-    case 'docker':
-        install_docker()
-        
-    case 'environment':
-        environment()
+Room_Of_Requirements().run()

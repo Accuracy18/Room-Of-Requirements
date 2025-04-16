@@ -25,7 +25,7 @@ function Gemini(bp, args)
         micro.InfoBar():Message(6)
     end
     
-	local request = shell.ExecCommand('cgemini', '-r', prompt)
+	local request = shell.ExecCommand('python3', '/home/jojo/.config/micro/plug/AIplugin/gemini.py', '-r', prompt)
 
     bp.Buf:Insert(-bp.Cursor.Loc, request)
     

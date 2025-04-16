@@ -1,1 +1,4 @@
 google-generativeai
+mako
+textual
+textual-dev
