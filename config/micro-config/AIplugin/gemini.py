@@ -18,9 +18,11 @@ model = genai.GenerativeModel(
     generation_config = {
         'max_output_tokens': 200,  # Adjust as needed
         'temperature': 0.4, # Adjust as needed
-        'stop_sequences': ['# End of explanation']
+        'stop_sequences': ['# End of explanation', "Key improvements and explanations", "* **"]
     }
 )
-instruction = f"write a python method to: {args.request}"
+instruction = f"write a python method to: {args.request}. No exaplnation, No elaboration, No commenting"
 response = model.generate_content(instruction)
 print(response.text)
+
+

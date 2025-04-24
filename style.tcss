@@ -1,0 +1,18 @@
+Header{
+    
+}
+
+Footer{
+    
+}
+
+#navigations{
+    height: 5%;
+    border: tall;
+    margin: 1 0
+}
+
+#widget2{
+    height: 90%;
+    border: tall;
+}
